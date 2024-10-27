@@ -1,0 +1,21 @@
+--user table
+CREATE TABLE User (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    email VARCHAR(50) UNIQUE,
+    password VARCHAR(100),
+    role VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+--product table
+CREATE TABLE Product (
+    product_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    description TEXT,
+    price DECIMAL(10, 2),
+    stock_quantity INT,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES Category(category_id)
+);
