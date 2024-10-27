@@ -19,3 +19,52 @@ CREATE TABLE Product (
     category_id INT,
     FOREIGN KEY (category_id) REFERENCES Category(category_id)
 );
+
+--category table
+CREATE TABLE Category (
+    category_id INT PRIMARY KEY AUTO_INCREMENT,
+    category_name VARCHAR(50)
+);
+
+--Order table
+CREATE TABLE Order (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_price DECIMAL(10, 2),
+    status VARCHAR(20),
+    FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
+
+--Order_Item table 
+CREATE TABLE Order_Item (
+    order_item_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    price DECIMAL(10, 2),
+    FOREIGN KEY (order_id) REFERENCES Order(order_id),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id)
+);
+
+--payment table
+CREATE TABLE Payment (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    amount DECIMAL(10, 2),
+    status VARCHAR(20),
+    FOREIGN KEY (order_id) REFERENCES Order(order_id)
+);
+
+--Review table
+CREATE TABLE Review (
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    product_id INT,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id)
+);
