@@ -20,11 +20,13 @@ CREATE TABLE Product (
     FOREIGN KEY (category_id) REFERENCES Category(category_id)
 );
 
+
 --category table
 CREATE TABLE Category (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(50)
 );
+
 
 --Order table
 CREATE TABLE Order (
@@ -35,6 +37,8 @@ CREATE TABLE Order (
     status VARCHAR(20),
     FOREIGN KEY (user_id) REFERENCES User(user_id)
 );
+
+
 
 --Order_Item table 
 CREATE TABLE Order_Item (
@@ -47,6 +51,7 @@ CREATE TABLE Order_Item (
     FOREIGN KEY (product_id) REFERENCES Product(product_id)
 );
 
+
 --payment table
 CREATE TABLE Payment (
     payment_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -56,6 +61,8 @@ CREATE TABLE Payment (
     status VARCHAR(20),
     FOREIGN KEY (order_id) REFERENCES Order(order_id)
 );
+
+
 
 --Review table
 CREATE TABLE Review (
