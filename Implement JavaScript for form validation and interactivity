@@ -1,0 +1,42 @@
+//Here's implementation of JavaScript for form validation and interactivity:
+
+
+// Get the registration form element
+const registrationForm = document.getElementById('registrationForm');
+
+// Add an event listener to the form submission
+registrationForm.addEventListener('submit', (event) => {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Get the input field values
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value.trim();
+  const role = document.getElementById('role').value;
+
+  // Validate the input fields
+  if (!name) {
+    alert('Name is required');
+    return;
+  }
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Please enter a valid email');
+    return;
+  }
+
+  if (!password || password.length < 6) {
+    alert('Password must be at least 6 characters long');
+    return;
+  }
+
+  if (!role) {
+    alert('Role is required');
+    return;
+  }
+
+  // If validation passes, submit the form
+  registrationForm.submit();
+});
+
