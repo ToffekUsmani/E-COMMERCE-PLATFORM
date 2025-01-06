@@ -1,29 +1,96 @@
-Open the Project in your IDE
-Open your IDE ( NetBeans).
-Import or open the project as a Maven Project (if using Maven).
-Check the src/main/java/com/ecommerce/config/DatabaseConnection.java file to configure your database connection.
-3. Configure the Database Connection
-In DatabaseConnection.java, update the following properties with your own MySQL configuration:
+# E-Commerce Platform
 
-Database Setup
-Create the Database: Open MySQL and create a new database named ecommerce (or a name of your choice). You can use the following command:
-sql
-Copy code
-CREATE DATABASE ecommerce;
-Create Tables: Run the SQL script found at src/resources/db/schema.sql to create the required tables. You can execute the script using a MySQL client like SQLYog, MySQL Workbench, or directly in the MySQL command line:
+## Project Overview
+This repository contains the source code for a fully functional e-commerce platform developed using Java and other necessary tools. The platform includes features like user authentication, product management, shopping cart functionality, and admin dashboards.
+
+## Features
+- User authentication with secure login and registration.
+- Role-based access control for buyers and administrators.
+- Product catalog with search and filter functionality.
+- Shopping cart with real-time updates.
+- Order management and tracking.
+- Responsive design for all devices.
+- Admin dashboard for inventory and sales analytics.
+
+## Tech Stack
+- *Backend:* Java, JDBC, Servlet JSP, Hibernate
+- *Frontend:* HTML, CSS, JavaScript, Bootstrap
+- *Database:* MySQL
+- *Server:* Apache Tomcat
+- *IDE:* NetBeans
+
+## Prerequisites
+1. *Java Development Kit (JDK):* Ensure JDK 8 or higher is installed.
+2. *Apache Tomcat:* Install Apache Tomcat server (version 9 or higher recommended).
+3. *MySQL Database:* Install MySQL and set up the database.
+4. *SQLYog:* (Optional) Use SQLYog for database management.
+
+## Installation Instructions
+
+### Step 1: Clone the Repository
 bash
-Verify Tables: Ensure that tables like User, Product, Order, CartItem, and Category are created correctly.
+git clone <your-github-repo-link>
+cd <repository-name>
 
-Running the Application
-Start the Tomcat Server:
 
-In your IDE, configure and start the Apache Tomcat server.
-Set the context path to /ecommerce-platform or a path of your choice.
-Deploy the application on the server.
-Access the Application:
+### Step 2: Database Setup
+1. Open MySQL or SQLYog.
+2. Create a new database (e.g., ecommerce_db).
+3. Import the SQL dump file provided in the database/ directory:
+   sql
+   source database/ecommerce_db.sql;
+   
 
-Open a web browser and go to http://localhost:8080/ecommerce-platform to access the application.
-Logging In / Creating an Account:
+### Step 3: Configure Database Connection
+1. Open the dbconfig.properties file in the src/ directory.
+2. Update the following properties with your MySQL credentials:
+   properties
+   db.url=jdbc:mysql://localhost:3306/ecommerce_db
+   db.username=<your-mysql-username>
+   db.password=<your-mysql-password>
+   
 
-Go to the registration page to create a new user account.
-Once registered, log in to browse products, add items to the cart, and place orders.
+### Step 4: Deploy on Apache Tomcat
+1. Open the project in NetBeans.
+2. Clean and build the project to generate a .war file.
+3. Copy the .war file to the webapps directory of Apache Tomcat.
+4. Start the Apache Tomcat server.
+
+### Step 5: Access the Application
+1. Open your web browser.
+2. Navigate to:
+   
+   http://localhost:8080/<your-project-name>
+   
+
+## Usage
+### Buyer
+- Register or log in to the platform.
+- Browse products, add them to the cart, and place an order.
+- View order history and track current orders.
+
+### Administrator
+- Log in using admin credentials.
+- Add, update, or delete products.
+- Monitor orders and analyze sales data.
+
+## Troubleshooting
+- *Issue:* Unable to connect to the database.
+  - *Solution:* Verify the database credentials in dbconfig.properties.
+- *Issue:* Tomcat server not starting.
+  - *Solution:* Check if another process is using port 8080, or update the port in server.xml.
+- *Issue:* Missing dependencies.
+  - *Solution:* Ensure all required libraries are included in the lib/ folder.
+
+## Future Enhancements
+- Integration with real-world payment gateways.
+- AI-driven product recommendations.
+- Advanced security features like two-factor authentication.
+- Mobile application development.
+
+## Contributors
+- Toffek Usmani
+- Viwek Raj Anand
+
+
+For any issues or questions, please contact toffekusmani786@gmail.com
